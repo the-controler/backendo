@@ -20,6 +20,7 @@ class UserControler extends Controller
         $response ['message'] ='user regest succ';
         $response ['code']=200;
         return response()->json($response);
+        
     }
     public function login(Request $request){
         $credentials = $request->only('email','password');
