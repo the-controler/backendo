@@ -20,7 +20,7 @@ class UserControler extends Controller
         $response ['message'] ='user regest succ';
         $response ['code']=200;
         return response()->json($response);
-        
+
     }
     public function login(Request $request){
         $credentials = $request->only('email','password');
@@ -53,7 +53,9 @@ class UserControler extends Controller
 
     }
 
-
+public function getUser() {
+        return response()->json(User::all(), 200);
+    }
    public  function getrole($email=null)
     {
         $user= User::find($email);

@@ -37,7 +37,8 @@ Route::post('register','App\Http\Controllers\UserControler@register');
 Route::post('login','App\Http\Controllers\UserControler@login');
 //Gestion
 Route::get('getrole','App\Http\Controllers\UserControler@getrole');
-
+// Get all Users
+Route::get('getUser', 'App\Http\Controllers\UserControler@getUser');
 // Get all Reservations
 Route::get('reservations', 'App\Http\Controllers\ReservationController@getReservation');
 // Add Reservation
