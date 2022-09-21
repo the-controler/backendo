@@ -3,82 +3,79 @@
 namespace App\Http\Controllers;
 
 use App\Models\reservation;
+use App\Models\car;
 use Illuminate\Http\Request;
-use App\Http\Controllers\AnniversaireController;
-use App\Http\Controllers\ClientController;
-use App\Http\Controllers\PackageController;
 
 class ReservationController extends Controller
 {
-
-
-    public function getReservation() {
-        return response()->json(Reservation::all(), 200);
+    public function getreservation() {
+        return response()->json(reservation::all(), 200);
     }
-    public function getReservationById($id) {
-        $reservation = Reservation::find($id);
+    public function getreservationById($id) {
+        $reservation = reservation::find($id);
         if(is_null($reservation)) {
-            return response()->json(['message' => 'Reservation Not Found'], 404);
+            return response()->json(['message' => 'reservation Not Found'], 404);
         }
         return response()->json($reservation::find($id), 200);
     }
 
-    public function addReservation(Request $request) {
-        $reservation = Reservation::create($request->all());
+    public function addreservation(Request $request,$id) {
+        $reservation = reservation::create($request->all());
+        $id=$reservation->id;
         return response($reservation, 201);
     }
 
-    public function updateReservation(Request $request, $id) {
-        $reservation = Reservation::find($id);
+    public function Reservation_car($name) {
+        $car_id = $this->get_ID_car($name);
+         $car = car::find($car_id);
+         if($car->status == 'Unavailable'){
+         $car->update(['status'=>'Available']);
+     }
+         else{
+         $car->update(['status'=>'Unavailable']);}
+         return response($car, 200);
+    }
+
+
+
+
+ public function get_ID_car($name) {
+        $car = car::where('name','=', $name)->first();
+        
+        if(is_null($car)) {
+            return response()->json(['message' => 'car Not Found'], 404);
+        }
+        $id = $car->id;
+        return $id;
+    }
+    public function updatereservation(Request $request, $id) {
+        $reservation = reservation::find($id);
         if(is_null($reservation)) {
-            return response()->json(['message' => 'Reservation Not Found'], 404);
+            return response()->json(['message' => 'reservation Not Found'], 404);
         }
         $reservation->update($request->all());
         return response($reservation, 200);
     }
 
-    public function deleteReservation(Request $request, $id) {
-        $reservation = Reservation::where('id', $id);
+    public function deletereservation(Request $request, $id) {
+        $reservation = reservation::find($id);
         if(is_null($reservation)) {
-            return response()->json(['message' => 'Reservation Not Found'], 404);
+            return response()->json(['message' => 'reservation Not Found'], 404);
         }
         $reservation->delete();
         return response()->json(null, 204);
     }
-    public function basicreservaniv() {
-         $IDF=app('App\Http\Controllers\AnniversaireController')->getAnnivId();
-         $IDC =app('App\Http\Controllers\ClientController')->getClientId();
-        $anniversaire = Reservation::create([
-            'id_client' => $IDC,
-            'id_package' => 1,
-            'id_fetetype' => 2,
-            'id_res_fete' => $IDF,
 
-        ]);
-        return response($anniversaire, 201);
-    }
-    public function proreservaniv() {
-        $IDF=app('App\Http\Controllers\AnniversaireController')->getAnnivId();
-        $IDC =app('App\Http\Controllers\ClientController')->getClientId();
-       $anniversaire = Reservation::create([
-           'id_client' => $IDC,
-           'id_package' => 2,
-           'id_fetetype' => 2,
-           'id_res_fete' => $IDF,
+    // public function getlastreservationId() {
 
-       ]);
-       return response($anniversaire, 201);
-   }
-    public function lastres() {
-        $maxValue = Reservation::orderBy('id', 'desc')->value('id');
+    //     $maxValue = reservation::orderBy('id', 'desc')->value('id');
 
-         $lastr= Reservation::find($maxValue);;
-          return response()->json($lastr, 200);
-    }
-    public function returnpac() {
-        $maxValue = Reservation::orderBy('id', 'desc')->value('id_package');
+    //   // $reservationf= reservation::find($maxValue, ['id']);;
+    //     return $maxValue;
+    // }
+    // public function lastcli() {
 
-        // $lastr= Reservation::find($maxValue);;
-          return $maxValue;
-    }
+    //     $reservationf= reservation::find($this->getlastreservationId());
+    //     return response()->json($reservationf, 200);
+    // }
 }

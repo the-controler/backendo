@@ -21,13 +21,18 @@ class User  extends Authenticatable implements JWTSubject
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'role'
-    ];
     public $timestamps = false;
+    protected $fillable = [
+        'first_name',
+        'last_name',
+       'card_id_or_passeport',
+       'phone',
+       'driving_license',
+       'age', 
+       'role',       
+       'username',
+        'password',
+    ];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -37,6 +42,7 @@ class User  extends Authenticatable implements JWTSubject
     protected $hidden = [
         'password',
         'remember_token',
+        'role',
     ];
 
     /**
@@ -50,7 +56,7 @@ class User  extends Authenticatable implements JWTSubject
 
     // Rest omitted for brevity
 
-    /**
+       /**
      * Get the identifier that will be stored in the subject claim of the JWT.
      *
      * @return mixed
@@ -69,12 +75,6 @@ class User  extends Authenticatable implements JWTSubject
     {
         return [];
     }
-    public function isAdmin() {
-        return $this->role === 'admin';
-     }
-     public function isUser() {
-        return $this->role === 'user';
-     }
 }
 
 

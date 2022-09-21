@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 
-class reservation extends Model
+class car extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -18,16 +18,12 @@ class reservation extends Model
      */
     public $timestamps = false;
     protected $fillable = [
-        'id_user',
-        'car_name',
-       'days',
-       'date_debut',
-       'date_fin',
-       'place',        
+        'name',
+        'image',
+       'description',
+       'status',
        'price',
-        'status',
-        'payment-methode',
-        'payment-status'
+       'guarantee'
     ];
 
     /**
@@ -36,9 +32,6 @@ class reservation extends Model
      * @var array<int, string>
      */
     protected $hidden = [
-        'status',
-        'payment-methode',
-        'payment-status',
+        'status'
     ];
-
-    }
+}
