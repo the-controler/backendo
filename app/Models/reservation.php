@@ -26,8 +26,8 @@ class reservation extends Model
        'place',        
        'price',
         'status',
-        'payment-methode',
-        'payment-status'
+        'payment_methode',
+        'payment_status'
     ];
 
     /**

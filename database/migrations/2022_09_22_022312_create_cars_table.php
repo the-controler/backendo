@@ -14,9 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('cars', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->id();
-            $table->string('name');
-            $table->index('name');
+            $table->string('name')->unique();
+            $table->index('name')->unique();
             $table->string('image');
             $table->text('description');
             $table->string('status')->default('Available');

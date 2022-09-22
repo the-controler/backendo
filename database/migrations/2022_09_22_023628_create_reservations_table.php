@@ -14,20 +14,20 @@ return new class extends Migration
     public function up()
     {
         Schema::create('reservations', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->id();
             $table->unsignedBigInteger('id_user');
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
             $table->string('car_name');
             $table->index('car_name');
-            $table->foreign('car_name')->references('name')->on('cars')->onDelete('cascade');
             $table->integer('days');
             $table->string('date_debut');
             $table->string('date_fin');
             $table->string('place');
             $table->double('price');
             $table->string('status');
-            $table->string('payment-methode');
-            $table->string('payment-status');
+            $table->string('payment_methode');
+            $table->string('payment_status');
 
             $table->timestamps();
         });
