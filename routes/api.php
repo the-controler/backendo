@@ -51,3 +51,9 @@ Route::post('addcar', 'App\Http\Controllers\CarController@addcar');
 Route::put('updatecar/{id}', 'App\Http\Controllers\CarController@updatecar');
 Route::delete('deletecar/{id}', 'App\Http\Controllers\CarController@deletecar');
 
+//places
+Route::get('places', 'App\Http\Controllers\placeController@get_all_place');
+Route::get('getplaceById/{id}', 'App\Http\Controllers\placeController@getplaceById');
+Route::post('addplace', 'App\Http\Controllers\placeController@addplace');
+Route::put('updateplace/{id}', 'App\Http\Controllers\placeController@updateplace');
+Route::delete('deleteplace/{id}', 'App\Http\Controllers\placeController@deleteplace');
