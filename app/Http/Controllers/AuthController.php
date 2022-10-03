@@ -30,6 +30,24 @@ class AuthController extends Controller
         return response()->json($response);
 
     }
+    public function registerUser (Request $request){
+        $user = User::create([
+        'first_name'=>$request->first_name,
+        'last_name'=>$request->last_name,
+        'card_id_or_passeport'=>$request->card_id_or_passeport,
+        'phone'=>$request->phone,
+        'driving_license'=>$request->driving_license,
+        'age'=>$request->age,
+        'role'=>"client",
+        'username'=>$request->username,
+        'password' => bcrypt($request->password)
+        ]);
+        $response['status'] = 1;
+        $response ['message'] ='user regest succ';
+        $response ['code']=200;
+        return response()->json($response);
+
+    }
     
     public function login(Request $request){
         $credentials = $request->only('username','password');

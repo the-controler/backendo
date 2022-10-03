@@ -21,6 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 //auth
 Route::post('register','App\Http\Controllers\AuthController@register');
+Route::post('registerUser','App\Http\Controllers\AuthController@registerUser');
 Route::post('login','App\Http\Controllers\AuthController@login');
 Route::post('Adlogin','App\Http\Controllers\AuthController@Adlogin');
 Route::get('refresh','App\Http\Controllers\AuthController@refresh');
