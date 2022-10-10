@@ -11,14 +11,14 @@ class CarImageController extends Controller
         return response()->json(car_image::all(), 200);
     }
     public function get_car_image_by_name($name) {
-        $car = car_image::where('car_name','=', $name)->first();
+        $car = car_image::where('car_name','=', $name)->get();
         
         if(is_null($car)) {
             return response()->json(['message' => 'car Not Found'], 404);
         }
         return response()->json($car, 200);
     }
-    
+
     public function getcar_imageById($id) {
         $car_image = car_image::find($id);
         if(is_null($car_image)) {
