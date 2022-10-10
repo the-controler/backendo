@@ -39,7 +39,7 @@ Route::delete('deleteuser/{id}', 'App\Http\Controllers\UserController@deleteuser
 Route::get('reservations', 'App\Http\Controllers\ReservationController@getreservation');
 Route::get('get_ID_car/{name}', 'App\Http\Controllers\ReservationController@get_ID_car');
 Route::put('Reservation_car/{name}', 'App\Http\Controllers\ReservationController@Reservation_car');
-Route::put('car_name/{name}', 'App\Http\Controllers\ReservationController@get_car_by_name');
+Route::get('car_name/{name}', 'App\Http\Controllers\ReservationController@get_car_by_name');
 
 Route::get('getreservationById/{id}', 'App\Http\Controllers\ReservationController@getreservationById');
 Route::post('addreservation', 'App\Http\Controllers\ReservationController@addreservation');
