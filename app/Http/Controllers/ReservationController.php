@@ -36,7 +36,13 @@ class ReservationController extends Controller
          return response($car, 200);
     }
 
-
+public function get_car_by_name($name) {
+    $car = car::where('name','=', $name)->first();
+    
+    if(is_null($car)) {
+        return response()->json(['message' => 'car Not Found'], 404);
+    }
+    return response()->json($car, 200);}
 
 
  public function get_ID_car($name) {

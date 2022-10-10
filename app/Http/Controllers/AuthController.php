@@ -70,7 +70,12 @@ class AuthController extends Controller
         $user = auth()->user();
         $data['token']= auth()->claims([
             'user_id'=>$user->id,
-            'username'=>$user->username
+            'username'=>$user->username,
+            'first_name'=>$user->first_name, 
+             'last_name'=>$user->last_name,
+             'card_id_or_passeport'=>$user->card_id_or_passeport,
+             'driving_license'=>$user->driving_license,
+             'age'=>$user->age
         ])->attempt($credentials);
         $response['data']= $data;
         $response['status']= 1;
