@@ -67,3 +67,4 @@ Route::get('getcar_imageById/{id}', 'App\Http\Controllers\CarImageController@get
 Route::post('addcar_image', 'App\Http\Controllers\CarImageController@addcar_image');
 Route::put('updatecar_image/{id}', 'App\Http\Controllers\CarImageController@updatecar_image');
 Route::delete('deletecar_image/{id}', 'App\Http\Controllers\CarImageController@deletecar_image');
+Route::get('get_car_image_by_name/{name}', 'App\Http\Controllers\CarImageController@get_car_image_by_name');
