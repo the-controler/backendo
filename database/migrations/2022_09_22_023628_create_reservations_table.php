@@ -23,6 +23,7 @@ return new class extends Migration
             $table->integer('days');
             $table->string('date_debut');
             $table->string('date_fin');
+            $table->string('hour');
             $table->string('place');
             $table->double('price');
             $table->string('status');

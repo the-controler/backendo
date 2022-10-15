@@ -23,6 +23,7 @@ class reservation extends Model
        'days',
        'date_debut',
        'date_fin',
+       'hour',
        'place',        
        'price',
         'status',
