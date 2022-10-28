@@ -19,9 +19,8 @@ class ReservationController extends Controller
         return response()->json($reservation::find($id), 200);
     }
 
-    public function addreservation(Request $request,$id) {
+    public function addreservation(Request $request) {
         $reservation = reservation::create($request->all());
-        $id=$reservation->id;
         return response($reservation, 201);
     }
 
